@@ -43,24 +43,24 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
-    if(!req.query.address){
+    if (!req.query.address) {
         return res.send({
             error: 'You must provide an address.'
         })
     }
 
-    geocode(req.query.address, (error, { latitude, longitude, location})=>{
-        if (error){
+    geocode(req.query.address, (error, {latitude, longitude, location}) => {
+        if (error) {
             return res.send({error})
         }
-        forecast(latitude, longitude, (error, forecastData) =>{
-            if (error){
+        forecast(latitude, longitude, (error, forecastData) => {
+            if (error) {
                 return res.send({error})
             }
             res.send({
                 forecast: forecastData,
                 location,
-                address:req.query.address
+                address: req.query.address
             })
         })
     });
@@ -94,7 +94,6 @@ app.get('*', (req, res) => {
         errorMessage: 'Page not found.'
     })
 });
-
 
 
 app.listen(3000, () => {
