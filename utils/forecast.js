@@ -11,7 +11,7 @@ const forecast = (latitude, longitude, callback) => {
         } else {
             const forecastText = 'It is currently ' + body.current.temp_c +
                 ' celsius out. There is a ' + body.current.precip_mm +
-                '% chance of rain. and it is currently ' + body.current.condition.text + ' outside';
+                '% chance of rain. and it is currently ' + body.current.condition.text + ' outside. Humidity is ' + body.current.humidity;
             callback(undefined, forecastText);
         }
     });
